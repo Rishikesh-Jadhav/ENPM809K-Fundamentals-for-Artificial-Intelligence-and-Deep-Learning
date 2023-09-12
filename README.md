@@ -11,12 +11,12 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
 ## 📄 Assignment List
 1. [Assignment 1: Image classification, KNN, SVM, Softmax, Fully Connected Neural Network using CIFAR-10 dataset](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/assignment1)
-- **Learnings**: 
-- Developed an understanding of image classification pipelines.
-- Acquired knowledge about various classification algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
-- Gained insight into data-driven approaches for solving classification problems.
-- Improved coding skills, particularly in efficient usage of NumPy for data manipulation and processing.
-- Recognized the significance of proper data splitting, validation techniques, and advanced feature representations to enhance classification performance.
+- **Learnings from Assignemnt 1**: 
+  - Developed an understanding of image classification pipelines.
+  - Acquired knowledge about various classification algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
+  - Gained insight into data-driven approaches for solving classification problems.
+  - Improved coding skills, particularly in efficient usage of NumPy for data manipulation and processing.
+  - Recognized the significance of proper data splitting, validation techniques, and advanced feature representations to enhance classification performance.
 
 
 ## 📝 Additional Resources
