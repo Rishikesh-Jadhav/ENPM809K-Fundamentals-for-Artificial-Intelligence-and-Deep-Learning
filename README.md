@@ -25,5 +25,5 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
 
 ## 📝 Additional Resources
-- [Course Assignments](https://cs231n.github.io/assignments2023/)
+- [Course Assignments](https://cs231n.github.io/)
 - [More Info](https://mage.umd.edu/enpm809k)
