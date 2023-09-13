@@ -14,8 +14,11 @@ Emphasizing deep learning, the course covers foundational machine learning princ
  - [k-Nearest Neighbor classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/knn.ipynb) (Completed)
    - Test accuracy on CIFAR-10: 0.282
  - [Training a Support Vector Machine:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/svm.ipynb) (Ongoing)
+   - Test accuracy on CIFAR-10: 
  - [Implement a Softmax classifier.Implement a Softmax classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/softmax.ipynb) (Ongoing)
+   - Test accuracy on CIFAR-10:
  - [Two-Layer Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/two_layer_net.ipynb) (Ongoing)
+   - Test accuracy on CIFAR-10: 
  - [Higher Level Representations: Image Features:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/features.ipynb) (Ongoing)
 - **Learnings from Assignemnt 1**: 
   - Developed an understanding of image classification pipelines.
@@ -26,5 +29,5 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
 
 ## 📝 Additional Resources
-- [Course Assignments](https://cs231n.github.io/)
-- [More Info](https://mage.umd.edu/enpm809k)
+- [Course assignments and modules](https://cs231n.github.io/)
+- [More informantion](https://mage.umd.edu/enpm809k)
