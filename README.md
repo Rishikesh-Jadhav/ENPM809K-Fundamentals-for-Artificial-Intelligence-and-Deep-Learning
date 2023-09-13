@@ -10,7 +10,12 @@ This course explores the transformative impact of data science in various domain
 Emphasizing deep learning, the course covers foundational machine learning principles, advanced neural network techniques, and practical hands-on experience with leading frameworks like Keras, TensorFlow, and PyTorch, enabling students to develop, assess, and troubleshoot neural networks for real-world applications.
 
 ## 📄 Assignment List
-1. [Assignment 1: Image classification, KNN, SVM, Softmax, Fully Connected Neural Network using CIFAR-10 dataset](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/assignment1)
+1. [Assignment 1](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/assignment1): Image classification, KNN, SVM, Softmax, Fully Connected Neural Network using CIFAR-10 dataset
+[Q1]: k-Nearest Neighbor classifier. (Done)
+[Q1]: Training a Support Vector Machine. (Done)
+[Q1]: Implement a Softmax classifier. (Done)
+[Q1]: Two-Layer Neural Network. (Done)
+[Q1]: Higher Level Representations: Image Features. (Done)
 - **Learnings from Assignemnt 1**: 
   - Developed an understanding of image classification pipelines.
   - Acquired knowledge about various classification algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
