@@ -11,12 +11,12 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
 ## 📄 Assignment List
 1. [Assignment 1](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/assignment1): Image classification, KNN, SVM, Softmax, Fully Connected Neural Network using CIFAR-10 dataset
- - [Q1](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/knn.ipynb): k-Nearest Neighbor classifier. (Done)
-    -Test accuracy on CIFAR-10: 0.282
- - [Q2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/svm.ipynb): Training a Support Vector Machine. (Ongoing)
- - [Q3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/softmax.ipynb): Implement a Softmax classifier. (Ongoing)
- - [Q4](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/two_layer_net.ipynb): Two-Layer Neural Network. (Ongoing)
- - [Q5](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/features.ipynb): Higher Level Representations: Image Features. (Ongoing)
+ - [k-Nearest Neighbor classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/knn.ipynb) (Completed)
+   - Test accuracy on CIFAR-10: 0.282
+ - [Training a Support Vector Machine:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/svm.ipynb) (Ongoing)
+ - [Implement a Softmax classifier.Implement a Softmax classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/softmax.ipynb) (Ongoing)
+ - [Two-Layer Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/two_layer_net.ipynb) (Ongoing)
+ - [Higher Level Representations: Image Features:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/features.ipynb) (Ongoing)
 - **Learnings from Assignemnt 1**: 
   - Developed an understanding of image classification pipelines.
   - Acquired knowledge about various classification algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
