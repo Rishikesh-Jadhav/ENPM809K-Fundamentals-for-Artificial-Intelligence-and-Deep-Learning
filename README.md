@@ -1,5 +1,5 @@
-# ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning
-This repository contains my solutions and code submissions for assignments and projects completed as part of ENPM809K during Fall 2023. Each assignment is organized in its own folder, with accompanying documentation and any necessary resources.
+# ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning 
+This repository contains my solutions and code submissions for assignments and projects completed as part of ENPM809K during Fall 2023. It's worth noting that this course is aligned with the curriculum of the Stanford CS231n class. Each assignment is organized in its own folder, with accompanying documentation and any necessary resources.
 
 ## 📚 Course Overview
 This course explores the transformative impact of data science in various domains, including consumer products, healthcare, and banking. It focuses on three key pillars:
@@ -12,10 +12,10 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 ## 📄 Assignment List
 1. [Assignment 1](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/assignment1): Image classification, KNN, SVM, Softmax, Fully Connected Neural Network using CIFAR-10 dataset
  - [Q1](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/knn.ipynb): k-Nearest Neighbor classifier. (Done)
- - [Q1]: Training a Support Vector Machine. (Ongoing)
- - [Q1]: Implement a Softmax classifier. (Ongoing)
- - [Q1]: Two-Layer Neural Network. (Ongoing)
- - [Q1]: Higher Level Representations: Image Features. (Ongoing)
+ - [Q2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/svm.ipynb): Training a Support Vector Machine. (Ongoing)
+ - [Q3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/softmax.ipynb): Implement a Softmax classifier. (Ongoing)
+ - [Q4](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/two_layer_net.ipynb): Two-Layer Neural Network. (Ongoing)
+ - [Q5](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/assignment1/assignment1/features.ipynb): Higher Level Representations: Image Features. (Ongoing)
 - **Learnings from Assignemnt 1**: 
   - Developed an understanding of image classification pipelines.
   - Acquired knowledge about various classification algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
@@ -25,4 +25,5 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
 
 ## 📝 Additional Resources
-- [Course Assignments](https://cs231n.github.io/assignments2023/assignment1/)
+- [Course Assignments](https://cs231n.github.io/assignments2023/)
+- [More Info](https://mage.umd.edu/enpm809k)
