@@ -69,6 +69,7 @@ class KNearestNeighbor(object):
         dists = np.zeros((num_test, num_train))
         for i in range(num_test):
             for j in range(num_train):
+          
                 #####################################################################
                 # TODO:                                                             #
                 # Compute the l2 distance between the ith test point and the jth    #
@@ -76,8 +77,13 @@ class KNearestNeighbor(object):
                 # not use a loop over dimension, nor use np.linalg.norm().          #
                 #####################################################################
                 # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
-                pass
+              
+              # Computing the Euclidean distance between test_data[i] and train_data[j] manually by using the formula :
+              ## dists_L2 = sqrt((p1 - q1)^2 + (p2 - q2)^2 + ... + (pn - qn)^2) where p, q are points in the n-dimensional space.
+              difference = X[i] - self.X_train[j]
+              squared_distance = np.sum(difference ** 2)
+              dists[i, j] = np.sqrt(squared_distance)
+              pass
 
                 # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
         return dists
@@ -101,6 +107,16 @@ class KNearestNeighbor(object):
             #######################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+            # Computing the L2 distance between the ith test point and all training points
+            # and storing the result in dists[i, :] by performing the following steps:-
+
+            # 1.Calculating the squared differences for all training points
+            # 2.Taking Sum along the columns to get the sum of squared differences for each point
+            # 3.Taking square root to get L2 distance and storing it in dists[i, :]
+
+            squared_differences = (X[i] - self.X_train) ** 2
+            sum_squared_differences = np.sum(squared_differences, axis=1)
+            dists[i, :] = np.sqrt(sum_squared_differences)
             pass
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -130,6 +146,21 @@ class KNearestNeighbor(object):
         #       and two broadcast sums.                                         #
         #########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+        
+        # Calculating the L2 distances using the formula: (x - y)^2 = x^2 - 2xy + y^2 
+        # Steps : 
+        # 1. Add the squares of the test points
+        # 2. Add the squares of the test points
+        # 3. Multiply -2 to the Cross product of X, X_train.
+        # 4. Summing all elements up(X^2 + X_Train^2 - 2*X*X_Train)
+        # 5. Take square root of the squared distances.
+
+        
+        X_squared = np.sum(X ** 2, axis=1, keepdims=True)  
+        X_Train_squared = np.sum(self.X_train ** 2, axis=1, keepdims=True) 
+        two_X_X_train = -2 * np.dot(X, self.X_train.T)  
+        dists_squared = X_squared + two_X_X_train + X_Train_squared.T 
+        dists = np.sqrt(dists_squared)
 
         pass
 
@@ -163,6 +194,15 @@ class KNearestNeighbor(object):
             # Hint: Look up the function numpy.argsort.                             #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+            
+            # Steps to find k-nearest neighbors:
+            # 1. Sort the indices of the distances from low to high.
+            # 2. Select the K nearest indices based on the sorted order.
+            # 3. Retrieve the corresponding labels from self.y_train and store them in the closest_y list.
+
+            sorted_indices = np.argsort(dists[i])
+            k_nearest_indices = sorted_indices[:k]
+            closest_y = self.y_train[k_nearest_indices]
 
             pass
 
@@ -176,6 +216,12 @@ class KNearestNeighbor(object):
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+            # Steps to find k-nearest neighbors:
+            # 1. Count how many occurrences of each label are there in the closest_y list.
+            # 2. Find the label with the most count, assign this predicted label to y_pred.
+
+            counts = np.bincount(closest_y)
+            y_pred[i] = np.argmax(counts)
             pass
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
