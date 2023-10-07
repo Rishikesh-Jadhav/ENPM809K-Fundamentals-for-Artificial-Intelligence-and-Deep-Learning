@@ -23,10 +23,9 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Test accuracy on CIFAR-10: 0.598
 
 - **Learnings from Assignemnt 1**: 
-  - Developed an understanding of image classification pipelines.
-  - Implemented various classification algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
-  - Gained insight into data-driven approaches for solving classification problems.
-  - Recognized the significance of proper data splitting, validation techniques, and advanced feature representations to enhance classification performance.
+  - Developed an understanding of image classification pipelines an implemented various classification  algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
+  - Learned about data driven solutions and recognized the significance of proper data splitting, validation techniques and feature representations for better classification performance.
+
 
 ## 📝 Additional Resources
 - [Course assignments and modules](https://cs231n.github.io/)
