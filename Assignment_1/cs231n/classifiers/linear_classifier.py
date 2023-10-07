@@ -65,7 +65,15 @@ class LinearClassifier(object):
             # replacement is faster than sampling without replacement.              #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+            
+            # STEPS
+            # We need to randomly select a mini-batch of training data and their corresponding labels from the given X and y arrays.
+            # We then use the generated indices to index into X and y to extract the mini-batch of data X_batch and labels y_batch.
+            
+            indices = np.random.choice(num_train, batch_size, replace=True)
+            # make a mini-batch
+            X_batch, y_batch = X[indices], y[indices]      
+            
             pass
 
             # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -80,6 +88,9 @@ class LinearClassifier(object):
             # Update the weights using the gradient and the learning rate.          #
             #########################################################################
             # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+
+            #To update the weights, we use the gradient descent update rule.
+            self.W -= learning_rate * grad
 
             pass
 
@@ -111,6 +122,8 @@ class LinearClassifier(object):
         ###########################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+        y_pred = X.dot(self.W).argmax(axis = 1) 
+        
         pass
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****

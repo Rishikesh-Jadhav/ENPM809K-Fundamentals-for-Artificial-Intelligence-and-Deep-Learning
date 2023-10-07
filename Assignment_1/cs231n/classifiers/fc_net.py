@@ -54,6 +54,21 @@ class TwoLayerNet(object):
         # weights and biases using the keys 'W2' and 'b2'.                         #
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+        
+        # Neural Network Initialization Steps:
+        # 1. Initialize the weights and biases for a two-layer neural network
+        # 2. Scale the weights by 'weight_scale' and initialize them with random values
+        #    drawn from a standard normal distribution
+        # 3. Set the biases to zero
+        # 4. Define parameters for both the forward and backward passes 
+       
+        # Initialize the weights and biases for the input-to-hidden layer 
+        self.params['W1'] = np.random.randn(input_dim, hidden_dim) * weight_scale
+        self.params['b1'] = np.zeros(hidden_dim)
+        
+        # Initialize the weights and biases for the hidden-to-output layer
+        self.params['W2'] = np.random.randn(hidden_dim, num_classes) * weight_scale
+        self.params['b2'] = np.zeros(num_classes)
 
         pass
 
@@ -88,6 +103,17 @@ class TwoLayerNet(object):
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+        # Forward Pass Steps:
+        # 1. Perform an affine transformation followed by the ReLU activation
+        # 2. Apply another affine transformation
+        # 3. Store cached values and outcomes for later use in the backward pass during training
+
+        # Perform an affine transformation followed by the ReLU activation
+        hidden_layer_output, hidden_layer_cache = affine_relu_forward(X, self.params['W1'], self.params['b1'])
+
+        # Apply another affine transformation
+        scores, output_layer_cache = affine_forward(hidden_layer_output, self.params['W2'], self.params['b2'])
+
         pass
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -111,6 +137,33 @@ class TwoLayerNet(object):
         # of 0.5 to simplify the expression for the gradient.                      #
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+
+        # Backward Pass Steps:
+        # 1. Compute the gradient of the loss with respect to the scores and apply softmax loss
+        # 2. Add a regularization term to the loss to prevent overfitting
+        # 3. Calculate gradients and perform the backward pass for the second layer
+        # 4. Add a regularization term to the gradient of the weights for the second layer
+        # 5. Calculate gradients and perform the backward pass for the first layer
+        # 6. Add a regularization term to the gradient of the weights for the first layer
+
+        # Compute the gradient of the loss with respect to the scores and apply softmax loss
+        loss, dout = softmax_loss(scores, y)
+
+        # Add a regularization term to the loss to prevent overfitting
+        loss += 0.5 * self.reg * (np.sum(np.power(self.params['W1'], 2)) + np.sum(np.power(self.params['W2'], 2)))
+
+        # Calculate gradients and perform the backward pass for the second layer
+        dz, grads['W2'], grads['b2'] = affine_backward(dout, output_layer_cache)
+
+        # Add a regularization term to the gradient of the weights for the second layer
+        grads['W2'] += self.reg * self.params['W2']
+
+        # Calculate gradients and perform the backward pass for the first layer
+        dx, grads['W1'], grads['b1'] = affine_relu_backward(dz, hidden_layer_cache)
+
+        # Add a regularization term to the gradient of the weights for the first layer
+        grads['W1'] += self.reg * self.params['W1']
+
 
         pass
 

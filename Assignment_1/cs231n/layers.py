@@ -27,7 +27,9 @@ def affine_forward(x, w, b):
     # will need to reshape the input into rows.                               #
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+    reshaped_x = x.reshape(x.shape[0], -1)
+    out = reshaped_x @ w + b
+    pass
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -61,6 +63,18 @@ def affine_backward(dout, cache):
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+    # Reshape the input matrix
+    reshaped_x = x.reshape(x.shape[0], -1)
+    
+    #Calculate gradient loss wrt x(input)
+    dx = (dout @ w.T).reshape(x.shape[0], *x.shape[1:])
+    
+    #Calculate gradient loss wrt w(weights)
+    dw = reshaped_x.T @ dout
+   
+    #Calculate gradient of the loss wrt b(bias) 
+    db = dout.sum(axis=0)
+
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -86,7 +100,7 @@ def relu_forward(x):
     # TODO: Implement the ReLU forward pass.                                  #
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+    out = np.maximum(0, x)
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -113,7 +127,12 @@ def relu_backward(dout, cache):
     # TODO: Implement the ReLU backward pass.                                 #
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-
+    
+    # If elements in x are less than 0 the gradient are zeroed
+    dout[x < 0] = 0
+    
+    # Assign modified gradient array 
+    dx = dout
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -144,6 +163,24 @@ def svm_loss(x, y):
     # cs231n/classifiers/linear_svm.py.                                       #
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+   
+    # Calculate the number of samples in the dataset
+    num_samples = len(y)
+
+    # Extract the scores for each sample that match the true labels y
+    true_scores = x[range(num_samples), y][:, None]
+
+    # Calculate the margins for each score, apply the ReLU activation function and negative differences are set to 0
+    margins = np.maximum(0, x - true_scores + 1)
+
+    # Compute the loss by summing up the margins, dividing by the number of samples num_samples, and subtracting 1
+    loss = margins.sum() / num_samples - 1
+
+    # Determine the gradient of the loss
+    dx = (margins > 0).astype(float) / num_samples
+
+    # Adjust the gradients for the true class scores
+    dx[range(num_samples), y] -= dx.sum(axis=1)
 
     pass
 
@@ -175,7 +212,24 @@ def softmax_loss(x, y):
     # cs231n/classifiers/softmax.py.                                          #
     ###########################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+    
+    # Calculate the number of samples in the dataset
+    num_samples = len(y)
 
+    # Ensure numerical stability while calculating the softmax probability for each class for each sample.
+    softmax_input = np.exp(x - x.max(axis=1, keepdims=True))
+
+    # Determine the probability for each class by normalizing the exponentials calculated in the preceding step.
+    softmax_output = softmax_input / softmax_input.sum(axis=1, keepdims=True)
+
+    # Compute the cross-entropy loss
+    loss = -np.log(softmax_output[range(num_samples), y]).sum() / num_samples
+
+    # Adjust the probabilities in softmax_output for the true classes
+    softmax_output[range(num_samples), y] -= 1
+
+    # Calculate the gradient of the loss
+    dx = softmax_output / num_samples
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****

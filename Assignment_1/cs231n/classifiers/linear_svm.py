@@ -55,6 +55,9 @@ def svm_loss_naive(W, X, y, reg):
     #############################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+    # Adding the regularization loss to the gradient
+    dW += 2 * reg * W
+
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -78,6 +81,30 @@ def svm_loss_vectorized(W, X, y, reg):
     #############################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+    # Step 1: Compute Scores and Margins
+    # We'll start by computing the scores for each class for all training examples. This involves multiplying the input data X by the weight matrix W. 
+    # Then, we'll calculate the margins, which are the differences between the scores of the correct class and the scores of the other classes plus a margin of 1. 
+    # We'll use broadcasting to efficiently compute these margins.
+    
+    num_train = X.shape[0]
+
+    # Compute scores
+    scores = X.dot(W)
+    # Get the scores for the correct classes
+    correct_scores = scores[np.arange(num_train), y]
+    # Calculate margins (hinge loss)
+    margins = scores - correct_scores[:, np.newaxis] + 1.0
+    # Set margins of the correct class to 0
+    margins[np.arange(num_train), y] = 0
+    # Ensure margins are non-negative
+    margins = np.maximum(0, margins)
+
+    # Step 2: Compute the loss
+    loss = np.sum(margins) / num_train
+
+    # Add regularization to the loss
+    loss += reg * np.sum(W * W)
+    
     pass
 
     # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -92,6 +119,23 @@ def svm_loss_vectorized(W, X, y, reg):
     # loss.                                                                     #
     #############################################################################
     # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+
+    # Step 3: Compute the Gradient
+    # To compute the gradient of the loss with respect to the weights W, we have to calculate how much each weight contributes to the loss for each training example. 
+    # We then haev to average contributions over all training examples.
+
+    # Initialize binary matrix to show which margins are greater than 0
+    binary_margins = (margins > 0).astype(int)
+    # Calculate the sum of positive margins for each training example
+    sum_positive_margins = np.sum(binary_margins, axis=1)
+    # Subtract the number of positive margins for the correct class from the binary matrix 
+    binary_margins[np.arange(X.shape[0]), y] = -sum_positive_margins
+    # Compute gradientS
+    dW = X.T.dot(binary_margins)
+    # Average over the number of training examples and add the regularization gradient
+    dW /= num_train
+    # Add regularization loss to the gradient
+    dW += 2 * reg * W
 
     pass
 
