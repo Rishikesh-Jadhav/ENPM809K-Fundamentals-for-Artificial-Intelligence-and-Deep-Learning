@@ -15,7 +15,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Test accuracy on CIFAR-10: 0.282
  - [Training a Support Vector Machine:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/svm.ipynb) 
    - Test accuracy on CIFAR-10: 0.365
- - [Implement a Softmax classifier.Implement a Softmax classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/softmax.ipynb) 
+ - [Implement a Softmax classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/softmax.ipynb) 
    - Test accuracy on CIFAR-10: 0.395
  - [Two-Layer Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/two_layer_net.ipynb) 
    - Test accuracy on CIFAR-10: 0.506
@@ -26,6 +26,20 @@ Emphasizing deep learning, the course covers foundational machine learning princ
   - Developed an understanding of image classification pipelines an implemented various classification  algorithms including k-Nearest Neighbor, SVM, Softmax, and Two-layer Neural Network.
   - Learned about data driven solutions and recognized the significance of proper data splitting, validation techniques and feature representations for better classification performance.
 
+### 2. [Assignment 2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_2): Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets using CIFAR-10 dataset
+ - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/knn.ipynb) 
+   - Validation / test accuracy on CIFAR-10: 0.547 / 0.539
+ - [Batch Normalization:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/svm.ipynb) 
+   - Validation / test accuracy on CIFAR-10:
+ - [Dropout:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/softmax.ipynb) 
+   - Validation / test accuracy on CIFAR-10:
+ - [Convolutional Neural Networks:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/two_layer_net.ipynb) 
+   - Validation / test accuracy on CIFAR-10:
+ - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/features.ipynb)
+   - Validation / test accuracy on CIFAR-10:
+
+- **Learnings from Assignemnt 2**: 
+  - 
 
 ## 📝 Additional Resources
 - [Course assignments and modules](https://cs231n.github.io/)
