@@ -19,7 +19,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Test accuracy on CIFAR-10: 0.395
  - [Two-Layer Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/two_layer_net.ipynb) 
    - Test accuracy on CIFAR-10: 0.506
- - [Higher Level Representations: Image Features:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/features.ipynb)
+ - [Higher Level Representations (Image Features):](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/features.ipynb)
    - Test accuracy on CIFAR-10: 0.598
 
 - **Learnings from Assignemnt 1**: 
@@ -29,9 +29,9 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 ### 2. [Assignment 2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_2): Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets using CIFAR-10 dataset
  - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/FullyConnectedNets.ipynb) 
    - Validation / test accuracy on CIFAR-10: 0.547 / 0.539
- - [Batch Normalization:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/svm.ipynb) 
+ - [Batch Normalization:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/BatchNormalization.ipynb) 
    - Validation / test accuracy on CIFAR-10:
- - [Dropout:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/softmax.ipynb) 
+ - [Dropout:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Dropout.ipynb) 
    - Validation / test accuracy on CIFAR-10:
  - [Convolutional Neural Networks:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/two_layer_net.ipynb) 
    - Validation / test accuracy on CIFAR-10:
