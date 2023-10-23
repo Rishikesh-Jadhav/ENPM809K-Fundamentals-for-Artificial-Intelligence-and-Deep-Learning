@@ -27,7 +27,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
   - Learned about data driven solutions and recognized the significance of proper data splitting, validation techniques and feature representations for better classification performance.
 
 ### 2. [Assignment 2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_2): Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets using CIFAR-10 dataset
- - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/knn.ipynb) 
+ - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/FullyConnectedNets.ipynb) 
    - Validation / test accuracy on CIFAR-10: 0.547 / 0.539
  - [Batch Normalization:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/svm.ipynb) 
    - Validation / test accuracy on CIFAR-10:
@@ -35,7 +35,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Validation / test accuracy on CIFAR-10:
  - [Convolutional Neural Networks:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/two_layer_net.ipynb) 
    - Validation / test accuracy on CIFAR-10:
- - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/features.ipynb)
+ - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Pytorch.ipynb)
    - Validation / test accuracy on CIFAR-10:
 
 - **Learnings from Assignemnt 2**: 
