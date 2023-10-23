@@ -28,7 +28,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
 ### 2. [Assignment 2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_2): Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets using CIFAR-10 dataset
  - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/FullyConnectedNets.ipynb) 
-   - Validation / test accuracy on CIFAR-10: 0.547 / 0.539
+   - Validation / test accuracy on CIFAR-10: 0.489 / 0.471
  - [Batch Normalization:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/BatchNormalization.ipynb) 
    - Validation / test accuracy on CIFAR-10:
  - [Dropout:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Dropout.ipynb) 
