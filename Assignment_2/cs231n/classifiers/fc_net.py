@@ -290,6 +290,12 @@ def affine_norm_relu_forward(x, w, b, gamma, beta, bn_params, normalization):
         # Affine layer: Computes the affine transformation.
         out, fc_cache = affine_forward(x, w, b)
 
+        # batch/layer norm
+        if normalization == 'batchnorm':
+            out, bn_cache = batchnorm_forward(out, gamma, beta, bn_params)
+        elif normalization == 'layernorm':
+            out, bn_cache = layernorm_forward(out, gamma, beta, bn_params)       
+
         # ReLU activation: Applies element-wise rectified linear unit (ReLU) activation.
         out, relu_cache = relu_forward(out)
 
@@ -305,7 +311,14 @@ def affine_norm_relu_backward(dout, cache, normalization):
         # Backward ReLU: Computes the gradients of the loss with respect to ReLU's input.
         dout = relu_backward(dout, relu_cache)
 
+        # batch/layer norm
+        dgamma, dbeta = None, None
+        if normalization == 'batchnorm':
+            dout, dgamma, dbeta = batchnorm_backward_alt(dout, bn_cache)   
+        elif normalization == 'layernorm':
+            dout, dgamma, dbeta = layernorm_backward(dout, bn_cache)
+
         # Backward affine layer: Computes the gradients of the loss with respect to the input data, weights, and biases.
         dx, dw, db = affine_backward(dout, fc_cache)
         
-        return dx, dw, db     
+        return dx, dw, db, dgamma, dbeta      
