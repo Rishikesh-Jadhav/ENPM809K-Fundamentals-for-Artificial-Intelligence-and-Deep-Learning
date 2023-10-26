@@ -29,11 +29,11 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 ### 2. [Assignment 2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_2): Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets using CIFAR-10 dataset
  - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/FullyConnectedNets.ipynb) 
    - Validation / Test accuracy on CIFAR-10: 0.489 / 0.471
- - [Batch Normalization:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/BatchNormalization.ipynb) 
+ - [Batch Normalization](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/BatchNormalization.ipynb) 
 
- - [Dropout:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Dropout.ipynb) 
+ - [Dropout](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Dropout.ipynb) 
 
- - [Convolutional Neural Networks:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/ConvolutionalNetworks.ipynb) 
+ - [Convolutional Neural Networks](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/ConvolutionalNetworks.ipynb) 
 
  - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Pytorch.ipynb)
    - Training / Validation / Test accuracy on CIFAR-10:
