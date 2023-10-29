@@ -63,6 +63,49 @@ class ThreeLayerConvNet(object):
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
+        # unpack input dims to get C, H and W
+        C, H, W = input_dim
+
+        # Convolutional Layer Weights:
+        # We initialize the convolutional layer weights ('W1') using random values from
+        # a Gaussian distribution. The shape of 'W1' is (num_filters, C, filter_size, filter_size),
+        # where 'num_filters' is the number of filters, 'C' is the number of input channels,
+        # and 'filter_size' is the width and height of the filters.
+        self.params['W1'] = np.random.randn(num_filters, C, filter_size, filter_size) * weight_scale        
+
+        # Convolutional Layer Biases:
+        # We initialize the biases ('b1') for the convolutional layer with zeros.
+        # The number of biases matches the number of filters.
+        self.params['b1'] = np.zeros(num_filters)
+
+
+        # maxpool output volume dims
+        # maxpool receives original input image dims as input since inputs dims are preserved
+        HP, WP = (H - 2)//2 + 1, (W - 2)//2 + 1  # 2x2 max pooling assuming typical S = 2
+        
+        # Hidden Affine Layer Weights:
+        # The weights ('W2') for the hidden affine layer are initialized using random
+        # values from a Gaussian distribution. The shape of 'W2' is determined by the
+        # number of filters applied in the convolutional layer and the output dimensions
+        # after max-pooling (num_filters * HP * WP) and 'hidden_dim'.
+        self.params['W2'] = np.random.randn(num_filters * HP * WP, hidden_dim) * weight_scale
+       
+        # Hidden Affine Layer Biases:
+        # We initialize the biases ('b2') for the hidden affine layer with zeros.
+        # The number of biases matches 'hidden_dim'.
+        self.params['b2'] = np.zeros(hidden_dim)
+
+        # Output Affine Layer Weights:
+        # The weights ('W3') for the output affine layer are initialized using random values
+        # from a Gaussian distribution. The shape of 'W3' is determined by 'hidden_dim'
+        # and 'num_classes'.
+        self.params['W3'] = np.random.randn(hidden_dim, num_classes) * weight_scale
+
+        # Output Affine Layer Biases:
+        # We initialize the biases ('b3') for the output affine layer with zeros.
+        # The number of biases matches 'num_classes'.
+        self.params['b3'] = np.zeros(num_classes)
+
         pass
 
         # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
@@ -101,6 +144,22 @@ class ThreeLayerConvNet(object):
         # cs231n/layer_utils.py in your implementation (already imported).         #
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+ 
+        # (1) Convolution - ReLU - 2x2 Max Pool
+        # Perform forward pass for the convolutional layer followed by ReLU activation
+        # and a 2x2 max pooling operation. Store the result in 'pool_out' and the
+        # intermediate cache in 'conv_cache'.
+        pool_out, conv_cache = conv_relu_pool_forward(X, W1, b1, conv_param, pool_param)
+
+        # (2) Affine (Fully Connected) - ReLU
+        # Perform forward pass for the first affine layer followed by ReLU activation.
+        # Store the result in 'A2' and the intermediate cache in 'fc1_cache'
+        A2, fc1_cache = affine_relu_forward(pool_out, W2, b2)
+
+        # (3) Affine (Fully Connected) - Softmax
+        # Perform forward pass for the second affine layer followed by softmax.
+        # Store the result in 'scores' and the intermediate cache in 'fc2_cache'.
+        scores, fc2_cache = affine_forward(A2, W3, b3)
 
         pass
 
@@ -124,6 +183,40 @@ class ThreeLayerConvNet(object):
         # of 0.5 to simplify the expression for the gradient.                      #
         ############################################################################
         # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
+
+
+        # (3) Softmax
+        # Calculate data loss using softmax and store it in the 'loss' variable.
+        # Also, calculate the gradient of the softmax loss with respect to 'scores'.
+        loss, softmax_grad = softmax_loss(scores, y)
+
+        # add regularization loss for all weights
+        loss += 0.5 * self.reg * np.sum(W1 * W1)
+        loss += 0.5 * self.reg * np.sum(W2 * W2)
+        loss += 0.5 * self.reg * np.sum(W3 * W3)
+        
+        # (3) Affine (Fully Connected)
+        # Compute gradients for the second affine layer ('W3', 'b3') and store them
+        # in 'grads' using 'affine_backward'. Also, compute gradients for L2
+        # regularization for 'W3'.
+        dout, grads['W3'], grads['b3'] = affine_backward(softmax_grad, fc2_cache)
+
+        # (2) Affine (Fully Connected) - ReLU
+        # Compute gradients for the first affine layer ('W2', 'b2') followed by ReLU,
+        # and store them in 'grads' using 'affine_relu_backward'. Also, compute gradients
+        # for L2 regularization for 'W2'.
+        dout, grads['W2'], grads['b2'] = affine_relu_backward(dout, fc1_cache)
+
+        # (1) Convolution - ReLU - 2x2 Max Pool
+        # Compute gradients for the convolutional layer ('W1', 'b1') followed by
+        # ReLU and 2x2 max pooling. Store them in 'grads' using 'conv_relu_pool_backward'.
+        # Also, compute gradients for L2 regularization for 'W1'.
+        dout, grads['W1'], grads['b1'] = conv_relu_pool_backward(dout, conv_cache)
+
+        # L2 regularization
+        grads['W1'] += self.reg * W1
+        grads['W2'] += self.reg * W2
+        grads['W3'] += self.reg * W3        
 
         pass
 

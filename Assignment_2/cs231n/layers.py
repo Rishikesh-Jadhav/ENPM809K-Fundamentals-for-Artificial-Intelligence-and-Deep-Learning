@@ -352,14 +352,6 @@ def batchnorm_backward(dout, cache):
     - dbeta: Gradient with respect to shift parameter beta, of shape (D,)
     """
     dx, dgamma, dbeta = None, None, None
-    ###########################################################################
-    # TODO: Implement the backward pass for batch normalization. Store the    #
-    # results in the dx, dgamma, and dbeta variables.                         #
-    # Referencing the original paper (https://arxiv.org/abs/1502.03167)       #
-    # might prove to be helpful.                                              #
-    ###########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
- 
 
     # Extract all relevant parameters from the cache
     beta, gamma, x_norm, var, eps, stddev, dev_from_mean, inverted_stddev, x, mean, axis = \
@@ -407,11 +399,6 @@ def batchnorm_backward(dout, cache):
 
     pass
 
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    ###########################################################################
-    #                             END OF YOUR CODE                            #
-    ###########################################################################
-
     return dx, dgamma, dbeta
 
 
@@ -431,15 +418,6 @@ def batchnorm_backward_alt(dout, cache):
     Inputs / outputs: Same as batchnorm_backward
     """
     dx, dgamma, dbeta = None, None, None
-    ###########################################################################
-    # TODO: Implement the backward pass for batch normalization. Store the    #
-    # results in the dx, dgamma, and dbeta variables.                         #
-    #                                                                         #
-    # After computing the gradient with respect to the centered inputs, you   #
-    # should be able to compute gradients with respect to the inputs in a     #
-    # single statement; our implementation fits on a single 80-character line.#
-    ###########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     # Batchnorm_backward_alt is computed by simplifying the gradients derived on paper.
     # The sequence of derivatives follows the order in which they are calculated in the paper.
@@ -476,11 +454,6 @@ def batchnorm_backward_alt(dout, cache):
 
     # End of gradient computation
 
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    ###########################################################################
-    #                             END OF YOUR CODE                            #
-    ###########################################################################
-
     return dx, dgamma, dbeta
 
 
@@ -508,17 +481,6 @@ def layernorm_forward(x, gamma, beta, ln_param):
     """
     out, cache = None, None
     eps = ln_param.get("eps", 1e-5)
-    ###########################################################################
-    # TODO: Implement the training-time forward pass for layer norm.          #
-    # Normalize the incoming data, and scale and  shift the normalized data   #
-    #  using gamma and beta.                                                  #
-    # HINT: this can be done by slightly modifying your training-time         #
-    # implementation of  batch normalization, and inserting a line or two of  #
-    # well-placed code. In particular, can you think of any matrix            #
-    # transformations you could perform, that would enable you to copy over   #
-    # the batch norm code and leave it almost unchanged?                      #
-    ###########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     # In layer normalization, all the hidden units in a layer share the same normalization
     # terms (mean and variance), but different training cases have different normalization terms.
@@ -537,10 +499,6 @@ def layernorm_forward(x, gamma, beta, ln_param):
     # Transpose the output to restore the original dimensions (N, D)
     out = out.T
 
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    ###########################################################################
-    #                             END OF YOUR CODE                            #
-    ###########################################################################
     return out, cache
 
 
@@ -561,14 +519,6 @@ def layernorm_backward(dout, cache):
     - dbeta: Gradient with respect to shift parameter beta, of shape (D,)
     """
     dx, dgamma, dbeta = None, None, None
-    ###########################################################################
-    # TODO: Implement the backward pass for layer norm.                       #
-    #                                                                         #
-    # HINT: this can be done by slightly modifying your training-time         #
-    # implementation of batch normalization. The hints to the forward pass    #
-    # still apply!                                                            #
-    ###########################################################################
-    # *****START OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
 
     # Transpose dout because we transposed the input, x, during the forward pass
     dx, dgamma, dbeta = batchnorm_backward(dout.T, cache)
@@ -576,10 +526,419 @@ def layernorm_backward(dout, cache):
     # Transpose gradients w.r.t. input, x, to their original dimensions (N, D)
     dx = dx.T
 
-    # *****END OF YOUR CODE (DO NOT DELETE/MODIFY THIS LINE)*****
-    ###########################################################################
-    #                             END OF YOUR CODE                            #
-    ###########################################################################
     return dx, dgamma, dbeta
 
+
+def conv_forward_naive(x, w, b, conv_param):
+    """
+    A naive implementation of the forward pass for a convolutional layer.
+
+    Input:
+    - x: Input data of shape (N, C, H, W)
+    - w: Filter weights of shape (F, C, HH, WW)
+    - b: Biases, of shape (F,)
+    - conv_param: A dictionary with the following keys:
+      - 'stride': The number of pixels between adjacent receptive fields in the
+        horizontal and vertical directions.
+      - 'pad': The number of pixels that will be used to zero-pad the input. 
+
+    Returns a tuple of:
+    - output_data: Output data, of shape (N, F, H', W') where H' and W' are given by
+      H' = 1 + (H + 2 * pad - HH) / stride
+      W' = 1 + (W + 2 * pad - WW) / stride
+    - cache: (x, w, b, conv_param)
+
+    HH-filter height
+    WW-filter width
+    """
+    output_data = None
+
+    # Extract parameters
+    pad = conv_param['pad']
+    stride = conv_param['stride']
+    N, C, H, W = x.shape
+    F, C, HH, WW = w.shape
+
+    # Check if the padding and stride settings are valid
+    assert (H + 2 * pad - HH) % stride == 0, '[Sanity Check] [FAIL]: Conv Layer Failed in Height'
+    assert (W + 2 * pad - WW) % stride == 0, '[Sanity Check] [FAIL]: Conv Layer Failed in Width'
+
+    # Calculate the height of the output feature maps based on the provided padding, stride, and input dimensions.
+    output_height = (H + 2 * pad - HH) // stride + 1 
+    # Calculate the width of the output feature maps
+    output_width  = (W + 2 * pad - WW) // stride + 1
+
+    # Create an output volume tensor after convolution(Initialze the output data as a 4d numpy array)
+    output_data = np.zeros((N, F, output_height, output_width ))
+
+    # Pad height and width axes of the input data with zeros 
+    x_pad = np.pad(x, ((0, 0), (0, 0), (pad, pad), (pad, pad)), 'constant')
+
+    # Naive Loops: Perform convolution
+    for n in range(N):  #  Iterate over each data point in the input
+        for f in range(F): #  Iterate over each filter or kernel
+            for i in range(0, output_height): #  Iterate over each vertical activation position in the output feature maps
+                for j in range(0, output_width ): #  Iterate over each horizontal activation position in the output feature maps
+                    # Calculate the convolution result for each neuron
+                    # Multiply the corresponding regions of the input data and filter weights, sums the results, and adds the bias term to obtain the output value for that specific neuron
+                    output_data[n, f, i, j] = (x_pad[n, :, i*stride:i*stride+HH, j*stride:j*stride+WW] * w[f, :, :, :]).sum() + b[f]
+                    #out                    =                           X                                W                  +   b
+
+    # Store the input data, filter weights, biases, and convolution parameters for later use
+    cache = (x, w, b, conv_param)
+    return output_data, cache
+
+def conv_backward_naive(dout, cache):
+    """
+    A naive implementation of the backward pass for a convolutional layer.
+
+    Inputs:
+    - dout: Upstream derivatives. parameter represents the gradients coming from the layer above in the network
+    - cache: A tuple of (x, w, b, conv_param) as in conv_forward_naive. tuple containing cached values from the forward pass
+
+    Returns a tuple of:
+    - dx: Gradient with respect to x
+    - dw: Gradient with respect to w
+    - db: Gradient with respect to b
+    """
+    # Initialize variables to store the gradients
+    dx, dw, db = None, None, None
+
+    # Extract parameters from the cache
+    x, w, b, conv_param = cache
+    N, C, H, W = x.shape
+    F, C, HH, WW = w.shape # w is filter weights
+    stride = conv_param.get('stride', 1) # get stride value else set to 1
+    pad = conv_param.get('pad', 0)
+
+    # Apply zero-padding to the input data, creating a new array x_pad. Padding ensures that the spatial dimensions are preserved during convolution
+    x_pad = np.pad(x, ((0, 0), (0, 0), (pad, pad), (pad, pad)), 'constant')
+
+    # Calculate the height of the output feature maps based on the input dimensions, filter size, padding, and stride
+    output_height  = (H + 2 * pad - HH) // stride + 1 
+    # Calculate the width of the output feature maps 
+    output_width  = (W + 2 * pad - WW) // stride + 1
+
+    # Initialize output gradients to store gradients wrt input data, weights, biases and wrt padded input
+    dx_pad = np.zeros_like(x_pad)
+    dx = np.zeros_like(x)
+    dw = np.zeros_like(w)
+    db = np.zeros_like(b)
+    
+    # Naive Loops: Compute gradients
+    for n in range(N): # Iterate over each data point in the input
+        for f in range(F): # Iterate over each filter or kernel.
+            db[f] += dout[n, f].sum() # Accumulate the gradients for the biases by summing the upstream gradients (dout) for the corresponding neuron and filter
+            for i in range(0, output_height): # For each y activation
+                for j in range(0, output_width): # For each x activation
+                    # Calculate the gradients for the filter weights by multiplying the corresponding regions of the input data and upstream gradients and accumulating the results
+                    dw[f] += x_pad[n, :, i * stride:i * stride + HH, j * stride:j * stride + WW] * dout[n, f, i, j]      
+                    #  Update dx_pad by accumulating the product of the filter weights and upstream gradients, adjusted for the appropriate spatial positions
+                    dx_pad[n, :, i * stride:i * stride + HH, j * stride:j * stride + WW] += w[f] * dout[n, f, i, j]
+    
+    # Extract input_data_gradients (dx) from input_data_gradients_padded since dx.shape should match x.shape
+    dx = dx_pad[:, :, pad:pad+H, pad:pad+W]
+
+    return dx, dw, db
+
+def max_pool_forward_naive(x, pool_param):
+    """
+    A naive implementation of the forward pass for a max-pooling layer.
+
+    Inputs:
+    - x: Input data, of shape (N, C, H, W)
+    - pool_param: dictionary with the following keys:
+      - 'pool_height': The height of each pooling region
+      - 'pool_width': The width of each pooling region
+      - 'stride': The distance between adjacent pooling regions
+
+    No padding is necessary here. Output size is given by 
+
+    Returns a tuple of:
+    - out: Output data, of shape (N, C, H', W') where H' and W' are given by
+      H' = 1 + (H - pool_height) / stride
+      W' = 1 + (W - pool_width) / stride
+    - cache: (x, pool_param)
+    """
+    out = None
+
+    # Extract parameters
+    N, C, H, W = x.shape
+    HH = pool_param.get('pool_height', 2)
+    WW = pool_param.get('pool_width', 2)
+    stride = pool_param.get('stride', 2)
+
+    # Check if the input dimensions and pooling parameters are valid
+    assert (H - HH) % stride == 0, '[Sanity Check] [FAIL]: Conv Layer Failed in Height'
+    assert (W - WW) % stride == 0, '[Sanity Check] [FAIL]: Conv Layer Failed in Width'
+
+    # Calculate the output feature map size
+    output_height = (H - HH) // stride + 1
+    output_width = (W - WW) // stride + 1
+
+    # Create the output feature map tensor after max-pooling
+    out = np.zeros((N, C, output_height, output_width)) # output has same dims NCHW format as input
+
+    # Naive loops to perform max-pooling
+    for n in range(N): # For each data point
+        for i in range(output_height): # For each y activation
+            for j in range(output_width): # For each x activation
+                # Apply max-pooling by taking the maximum value within each pooling region
+                out[n, :, i, j] = np.amax(x[n, :, i*stride:i*stride+HH, j*stride:j*stride+WW], axis=(-1, -2))
+    
+    # Cache the input data and pooling parameters for later use during backward pass.
+    cache = (x, pool_param)
+    return out, cache
+
+
+def max_pool_backward_naive(dout, cache):
+    """
+    A naive implementation of the backward pass for a max-pooling layer.
+
+    Inputs:
+    - dout: Upstream derivatives
+    - cache: A tuple of (x, pool_param) as in the forward pass.
+
+    Returns:
+    - dx: Gradient with respect to x
+    """
+    dx = None
+    # Extract constants and shapes,including the input dimensions and pooling parameters.
+    x, pool_param = cache
+    N, C, H, W = x.shape
+    HH = pool_param.get('pool_height', 2)
+    WW = pool_param.get('pool_width', 2)
+    stride = pool_param.get('stride', 2)
+
+    # Calculate the dimensions of the output feature maps based on the input dimensions and pooling parameters
+    output_height = (H - HH) // stride + 1 
+    output_width = (W - WW) // stride + 1
+
+    # Initialized with zeros to store the gradient with respect to the input data
+    dx = np.zeros_like(x)
+    
+    # Naive loops to compute the gradients
+    for n in range(N): # For each data point
+        for c in range(C): # For each channel
+            for i in range(output_height): # For each y activation
+                for j in range(output_width): # For each x activation
+                    # Determine the indices of the maximum value in the corresponding pooling region
+                    ind = np.argmax(x[n, c, i*stride:i*stride+HH, j*stride:j*stride+WW])
+                    # Convert the flattened index into a 2D index within the pooling region
+                    ind1, ind2 = np.unravel_index(ind, (HH, WW))
+                    
+                    # Pass the gradient only through the index of the maximum value                    
+                    dx[n, c, i*stride:i*stride+HH, j*stride:j*stride+WW][ind1, ind2] = dout[n, c, i, j]
+
+    return dx
+
+def spatial_batchnorm_forward(x, gamma, beta, bn_param):
+    """
+    Computes the forward pass for spatial batch normalization.
+
+    Inputs:
+    - x: Input data of shape (N, C, H, W)
+    - gamma: Scale parameter, of shape (C,)
+    - beta: Shift parameter, of shape (C,)
+    - bn_param: Dictionary with the following keys:
+      - mode: 'train' or 'test'; required
+      - eps: Constant for numeric stability
+      - momentum: Constant for running mean / variance. momentum=0 means that
+        old information is discarded completely at every time step, while
+        momentum=1 means that new information is never incorporated. The
+        default of momentum=0.9 should work well in most situations.
+      - running_mean: Array of shape (D,) giving running mean of features
+      - running_var Array of shape (D,) giving running variance of features
+
+    Returns a tuple of:
+    - out: Output data, of shape (N, C, H, W)
+    - cache: Values needed for the backward pass
+    """
+    out, cache = None, None
+
+    # Get the dimensions of the input data
+    N, C, H, W = x.shape
+
+    # Transpose the input to a channel-last notation (N, H, W, C)
+    # and then reshape it to normalize over N*H*W for each channel (C)
+    x = x.transpose(0, 2, 3, 1).reshape(N*H*W, C)
+
+    # Call the batch normalization forward pass on the reshaped data
+    out, cache = batchnorm_forward(x, gamma, beta, bn_param)
+
+    # Transpose the output back to the original shape (N, C, H, W)
+    out = out.reshape(N, H, W, C).transpose(0, 3, 1, 2)
+
+    return out, cache
+
+
+def spatial_batchnorm_backward(dout, cache):
+    """
+    Computes the backward pass for spatial batch normalization.
+
+    Inputs:
+    - dout: Upstream derivatives, of shape (N, C, H, W)
+    - cache: Values from the forward pass
+
+    Returns a tuple of:
+    - dx: Gradient with respect to inputs, of shape (N, C, H, W)
+    - dgamma: Gradient with respect to scale parameter, of shape (C,)
+    - dbeta: Gradient with respect to shift parameter, of shape (C,)
+    """
+    # Initialize gradients with respect to input (dx), scale parameter (dgamma), and shift parameter (dbeta)
+    dx, dgamma, dbeta = None, None, None
+
+    N, C, H, W = dout.shape
+
+    # Transpose the input to a channel-last notation (N, H, W, C)
+    # and then reshape it to normalize over N*H*W for each channel (C)
+    dout = dout.transpose(0, 2, 3, 1).reshape(N*H*W, C)
+
+    # Calculate gradients using the batchnorm_backward_alt function
+    dx, dgamma, dbeta = batchnorm_backward_alt(dout, cache)
+
+    # Transpose the gradient output back to its original shape (N, C, H, W)
+    dx = dx.reshape(N, H, W, C).transpose(0, 3, 1, 2)    
+
+    return dx, dgamma, dbeta
+
+
+def spatial_groupnorm_forward(x, gamma, beta, G, gn_param):
+    """
+    Computes the forward pass for spatial group normalization.
+    In contrast to layer normalization, group normalization splits each entry 
+    in the data into G contiguous pieces, which it then normalizes independently.
+    Per feature shifting and scaling are then applied to the data, in a manner identical to that of batch normalization and layer normalization.
+
+    Inputs:
+    - x: Input data of shape (N, C, H, W)
+    - gamma: Scale parameter, of shape (1, C, 1, 1)
+    - beta: Shift parameter, of shape (1, C, 1, 1)
+    - G: Integer mumber of groups to split into, should be a divisor of C
+    - gn_param: Dictionary with the following keys:
+      - eps: Constant for numeric stability
+
+    Returns a tuple of:
+    - out: Output data, of shape (N, C, H, W)
+    - cache: Values needed for the backward pass
+    """
+    out, cache = None, None
+    eps = gn_param.get("eps", 1e-5)
+
+    # key idea of Groupnorm: compute mean and variance statistics by dividing 
+    # each datapoint into G groups 
+    # gamma/beta (shift/scale) are per channel
+
+    # Extract parameters and parameters for the group normalization
+    N, C, H, W = x.shape
+    size = (N*G, C//G * H * W) # in groupnorm, D = C//G * H * W
+
+    # Step 0 - Reshape input data to accommodate groups (G)
+    # divide each sample into G groups (G new samples)
+    x = x.reshape((N*G, -1)) # reshape to same as size # reshape NxCxHxW ==> N*GxC/GxHxW =N1*C1 (N1>N*Groups)
+
+    # Step 1 - Compute group mean by averaging over each group
+    # mini-batch mean by averaging over a particular column / feature dimension (D)
+    # over each sample (N) in a minibatch 
+    mean = x.mean(axis = 1, keepdims= True) # (N,1) # sum through D
+    # can also do mean = 1./N * np.sum(x, axis = 1)
+
+    # Step 2 - Subtract group mean from the data
+    dev_from_mean = x - mean # (N,D)
+
+    # Step 3 - Compute the squared deviation from the mean
+    dev_from_mean_sq = dev_from_mean ** 2 # (N,D)
+
+    # Step 4 - Compute group variance by averaging squared deviations
+    var = 1./size[1] * np.sum(dev_from_mean_sq, axis = 1, keepdims= True) # (N,1)
+    # can also do var = x.var(axis = 0)
+
+    # Step 5 - Compute the standard deviation from variance, add eps for numerical stability
+    stddev = np.sqrt(var + eps) # (N,1)
+
+    # Step 6 -Invert the standard deviation to obtain the denominator
+    inverted_stddev = 1./stddev # (N,1)
+
+    # Step 7 - Apply normalization using the inverted standard deviation
+    x_norm = dev_from_mean * inverted_stddev # also called z or x_hat (N,D) 
+    x_norm = x_norm.reshape(N, C, H, W)
+
+    # Step 8 - Apply scaling parameter (gamma) to normalized data
+    scaled_x = gamma * x_norm # (N,D)
+
+    # Step 9 - Shift the scaled data by the shift parameter (beta)
+    out = scaled_x + beta # (N,D)
+
+    # Backpropagation variables
+    axis = (0, 2, 3)
+
+    # Cache values for backward pass
+    cache = {'mean': mean, 'stddev': stddev, 'var': var, 'gamma': gamma, \
+             'beta': beta, 'eps': eps, 'x_norm': x_norm, 'dev_from_mean': dev_from_mean, \
+             'inverted_stddev': inverted_stddev, 'x': x, 'axis': axis, 'size': size, 'G': G, 'scaled_x': scaled_x}
+    
+    return out, cache
+
+
+def spatial_groupnorm_backward(dout, cache):
+    """
+    Computes the backward pass for spatial group normalization.
+
+    Inputs:
+    - dout: Upstream derivatives, of shape (N, C, H, W)
+    - cache: Values from the forward pass
+
+    Returns a tuple of:
+    - dx: Gradient with respect to inputs, of shape (N, C, H, W)
+    - dgamma: Gradient with respect to scale parameter, of shape (1, C, 1, 1)
+    - dbeta: Gradient with respect to shift parameter, of shape (1, C, 1, 1)
+    """
+    # Initialize gradients for input (dx), scale parameter (dgamma), and shift parameter (dbeta)
+    dx, dgamma, dbeta = None, None, None
+
+    # Convention used is downstream gradient = local gradient * upstream gradient
+    # Extract all relevant parameters and intermediate values from the cache
+    beta, gamma, x_norm, var, eps, stddev, dev_from_mean, inverted_stddev, x, mean, axis, size, G, scaled_x = \
+    cache['beta'], cache['gamma'], cache['x_norm'], cache['var'], cache['eps'], \
+    cache['stddev'], cache['dev_from_mean'], cache['inverted_stddev'], cache['x'], \
+    cache['mean'], cache['axis'], cache['size'], cache['G'], cache['scaled_x']
+
+    N, C, H, W = dout.shape
+    
+    # (9) Calculate the gradient with respect to shift parameter (dbeta)
+    dbeta = np.sum(dout, axis = (0,2,3), keepdims = True) #1xCx1x1
+    dscaled_x = dout # N1xC1xH1xW1
+
+    # (8) Calculate the gradient with respect to scale parameter (dgamma)
+    dgamma = np.sum(dscaled_x * x_norm,axis = (0,2,3), keepdims = True) # N = sum_through_D,W,H([N1xC1xH1xW1]xN1xC1xH1xW1)
+    dx_norm = dscaled_x * gamma # N1xC1xH1xW1 = [N1xC1xH1xW1] x[1xC1x1x1]
+    dx_norm = dx_norm.reshape(size) #(N1*G,C1//G*H1*W1)
+
+    # (7) Calculate the gradient with respect to inverted standard deviation (dinverted_stddev)
+    dinverted_stddev = np.sum(dx_norm * dev_from_mean, axis = 1, keepdims = True) # N = sum_through_D([NxD].*[NxD]) =4×60
+    ddev_from_mean = dx_norm * inverted_stddev #[NxD] = [NxD] x [Nx1]
+
+    # (6) Calculate the gradient with respect to standard deviation (dstddev)
+    dstddev = (-1/(stddev**2)) * dinverted_stddev # N = N x [N]
+
+    # (5) Calculate the gradient with respect to variance (dvar)
+    dvar = 0.5 * (1/np.sqrt(var + eps)) * dstddev # N = [N+const]xN
+
+    # (4) Calculate the gradient with respect to squared deviation from the mean (ddev_from_mean_sq)
+    ddev_from_mean_sq = (1/size[1]) * np.ones(size) * dvar # NxD = NxD*N
+
+    # (3) Calculate the gradient with respect to the deviation from the mean (ddev_from_mean)
+    ddev_from_mean += 2 * dev_from_mean * ddev_from_mean_sq # [NxD] = [NxD]*[NxD]
+
+    # (2) Calculate the gradient with respect to the normalized data (dx_norm)
+    dx = (1) * ddev_from_mean # [NxD] = [NxD]
+    dmean = -1 * np.sum(ddev_from_mean, axis = 1, keepdims = True) # N = sum_through_D[NxD]
+
+    # (1) Calculate the gradient with respect to the group mean (dmean)
+    dx += (1/size[1]) * np.ones(size) * dmean # NxD (N= N1*Groups) += [NxD]XN
+
+    # (0) Calculate the gradient with respect to the inputs (dx) and reshape it to the original shape
+    dx = dx.reshape(N, C, H, W)
+
+    return dx, dgamma, dbeta
 
