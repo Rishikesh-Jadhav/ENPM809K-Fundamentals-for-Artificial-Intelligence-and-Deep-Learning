@@ -35,8 +35,8 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 
  - [Convolutional Neural Networks](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/ConvolutionalNetworks.ipynb) 
 
- - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/Pytorch.ipynb)
-   - Training / Validation / Test accuracy on CIFAR-10:
+ - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/PyTorch.ipynb)
+   - Training / Validation / Test accuracy on CIFAR-
 
 - **Learnings from Assignemnt 2**: 
   - 
