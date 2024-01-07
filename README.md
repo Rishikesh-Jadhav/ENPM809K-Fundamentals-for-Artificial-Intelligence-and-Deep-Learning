@@ -39,7 +39,10 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Validation / Test accuracy on CIFAR: 0.791 / 0.789
 
 - **Learnings from Assignemnt 2**: 
-  - 
+
+### 2. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Style Transfer, Generative Adversarial Networks
+
+- **Learnings from Assignemnt 3**:
 
 ## 📝 Additional Resources
 - [Course assignments and modules](https://cs231n.github.io/)
