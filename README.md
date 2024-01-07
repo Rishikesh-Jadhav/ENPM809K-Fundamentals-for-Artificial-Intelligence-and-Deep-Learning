@@ -10,7 +10,9 @@ This course explores the transformative impact of data science in various domain
 Emphasizing deep learning, the course covers foundational machine learning principles, advanced neural network techniques, and practical hands-on experience with leading frameworks like Keras, TensorFlow, and PyTorch, enabling students to develop, assess, and troubleshoot neural networks for real-world applications.
 
 ## 📄 Assignment List
+
 ### 1. [Assignment 1](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_1): Image classification, KNN, SVM, Softmax, Fully Connected Neural Network using CIFAR-10 dataset
+
  - [k-Nearest Neighbor classifier:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/knn.ipynb) 
    - Test accuracy on CIFAR-10: 0.282
  - [Training a Support Vector Machine:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_1/svm.ipynb) 
@@ -27,6 +29,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
   - Learned about data driven solutions and recognized the significance of proper data splitting, validation techniques and feature representations for better classification performance.
 
 ### 2. [Assignment 2](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_2): Fully-Connected Nets, Batch Normalization, Dropout, Convolutional Nets using CIFAR-10 dataset
+
  - [Multi Layer Fully-connected Neural Network:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/FullyConnectedNets.ipynb) 
    - Validation / Test accuracy on CIFAR-10: 0.489 / 0.471
  - [Batch Normalization](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/BatchNormalization.ipynb) 
@@ -50,6 +53,7 @@ Emphasizing deep learning, the course covers foundational machine learning princ
   - PyTorch/Tensorflow in CIFAR-10: Applied PyTorch and Tensorflow to construct, train, and assess models on CIFAR-10. Conducted a comparative analysis of model performance between PyTorch and Tensorflow.
     
 ### 3. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Transformer Captioning, Generative Adversarial Networks
+
  - [Image Captioning with Vanilla RNNs](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/RNN_Captioning.ipynb)
 
  - [Image Captioning with LSTMs](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/LSTM_Captioning.ipynb)
