@@ -39,9 +39,9 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Validation / Test accuracy on CIFAR: 0.791 / 0.789
 
 - **Learnings from Assignemnt 2**:  
-  - Multi Layer Fully-connected Neural Network:Explored fully-connected neural network architecture, considering the impact of hyperparameters.Addressed overfitting using dropout and observed its effectiveness.
+  - Multi Layer Fully-connected Neural Network: Explored fully-connected neural network architecture, considering the impact of hyperparameters.Addressed overfitting using dropout and observed its effectiveness.
   
-  - Batch Normalization:Implemented batch normalization, understanding its role in stabilizing training and enhancing convergence. Recognized its contribution to faster training and improved generalization.
+  - Batch Normalization: Implemented batch normalization, understanding its role in stabilizing training and enhancing convergence. Recognized its contribution to faster training and improved generalization.
   
   - Dropout: Implemented dropout regularization to mitigate overfitting. Acknowledged the role of dropout in creating more robust models.
   
@@ -62,17 +62,18 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    
 - **Learnings from Assignemnt 3**:
   
-  - Image Captioning with Vanilla RNNs:Explored image captioning using Vanilla RNNs.Addressed challenges in generating captions for images.
+  - Image Captioning with Vanilla RNNs: Explored image captioning using Vanilla RNNs. Addressed challenges in generating captions for images.
   
   - Image Captioning with LSTMs: Implemented image captioning using LSTMs, achieving improved caption generation compared to Vanilla RNNs.
   
-  - Network Visualization: Learned techniques for visualizing neural network activations.Explored methods to interpret neural network workings.
+  - Network Visualization: Learned techniques for visualizing neural network activations. Explored methods to interpret neural network workings.
   
    Style Transfer: Implemented neural style transfer using PyTorch. Explored creative applications of deep learning in image processing.
   
   - Generative Adversarial Networks (GANs): Understood GANs and applied them for image generation. Implemented a GAN model using PyTorch for realistic image synthesis.
 
 Assignment 3 provided insights into advanced deep learning topics, including image captioning, network visualization, style transfer, and generative models.
+
 ## 📝 Additional Resources
 - [Course assignments and modules](https://cs231n.github.io/)
 - [More informantion](https://mage.umd.edu/enpm809k)
