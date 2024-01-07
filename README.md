@@ -41,15 +41,15 @@ Emphasizing deep learning, the course covers foundational machine learning princ
 - **Learnings from Assignemnt 2**: 
 
 ### 3. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Style Transfer, Generative Adversarial Networks
- - [Image Captioning with Vanilla RNNs:]()
+ - [Image Captioning with Vanilla RNNs]()
 
- - [Image Captioning with LSTMs:]()
+ - [Image Captioning with LSTMs]()
 
- - [Network Visualization: Saliency maps, Class Visualization, and Fooling Images (PyTorch):]()
+ - [Network Visualization: Saliency maps, Class Visualization, and Fooling Images (PyTorch)]()
 
- - [Style Transfer (PyTorch):]()
+ - [Style Transfer (PyTorch)]()
 
- - [Generative Adversarial Networks (PyTorch):]()
+ - [Generative Adversarial Networks (PyTorch)]()
    
 - **Learnings from Assignemnt 3**:
 
