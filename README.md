@@ -38,27 +38,16 @@ Emphasizing deep learning, the course covers foundational machine learning princ
  - [Pytorch/Tensorflow in CIFAR-10:](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_2/PyTorch.ipynb)
    - Validation / Test accuracy on CIFAR: 0.791 / 0.789
 
-- **Learnings from Assignemnt 2**: 
+- **Learnings from Assignemnt 2**:  
+ - Multi Layer Fully-connected Neural Network:Explored fully-connected neural network architecture, considering the impact of hyperparameters.Addressed overfitting using dropout and observed its effectiveness.
  
- - Multi Layer Fully-connected Neural Network:
-  - Explored fully-connected neural network architecture, considering the impact of hyperparameters.
-  - Addressed overfitting using dropout and observed its effectiveness.
+ - Batch Normalization:Implemented batch normalization, understanding its role in stabilizing training and enhancing convergence. Recognized its contribution to faster training and improved generalization.
  
- - Batch Normalization:
-  - Implemented batch normalization, understanding its role in stabilizing training and enhancing convergence.
-  - Recognized its contribution to faster training and improved generalization.
+ - Dropout: Implemented dropout regularization to mitigate overfitting. Acknowledged the role of dropout in creating more robust models.
  
- - Dropout:
-  - Implemented dropout regularization to mitigate overfitting.
-  - Acknowledged the role of dropout in creating more robust models.
- 
- - Convolutional Neural Networks (CNNs):
-  - Implemented CNNs for image classification on CIFAR-10.
-  - Understood the significance of convolutional layers, pooling, and fully-connected layers.
+ - Convolutional Neural Networks (CNNs): Implemented CNNs for image classification on CIFAR-10. Understood the significance of convolutional layers, pooling, and fully-connected layers.
   
- - PyTorch/Tensorflow in CIFAR-10:
-  - Applied PyTorch and Tensorflow to construct, train, and assess models on CIFAR-10.
-  - Conducted a comparative analysis of model performance between PyTorch and Tensorflow.
+ - PyTorch/Tensorflow in CIFAR-10: Applied PyTorch and Tensorflow to construct, train, and assess models on CIFAR-10. Conducted a comparative analysis of model performance between PyTorch and Tensorflow.
     
 ### 3. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Style Transfer, Generative Adversarial Networks
  - [Image Captioning with Vanilla RNNs]()
