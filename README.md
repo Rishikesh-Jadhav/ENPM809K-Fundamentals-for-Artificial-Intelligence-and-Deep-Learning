@@ -39,15 +39,15 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    - Validation / Test accuracy on CIFAR: 0.791 / 0.789
 
 - **Learnings from Assignemnt 2**:  
- - Multi Layer Fully-connected Neural Network:Explored fully-connected neural network architecture, considering the impact of hyperparameters.Addressed overfitting using dropout and observed its effectiveness.
- 
- - Batch Normalization:Implemented batch normalization, understanding its role in stabilizing training and enhancing convergence. Recognized its contribution to faster training and improved generalization.
- 
- - Dropout: Implemented dropout regularization to mitigate overfitting. Acknowledged the role of dropout in creating more robust models.
- 
- - Convolutional Neural Networks (CNNs): Implemented CNNs for image classification on CIFAR-10. Understood the significance of convolutional layers, pooling, and fully-connected layers.
+  - Multi Layer Fully-connected Neural Network:Explored fully-connected neural network architecture, considering the impact of hyperparameters.Addressed overfitting using dropout and observed its effectiveness.
   
- - PyTorch/Tensorflow in CIFAR-10: Applied PyTorch and Tensorflow to construct, train, and assess models on CIFAR-10. Conducted a comparative analysis of model performance between PyTorch and Tensorflow.
+  - Batch Normalization:Implemented batch normalization, understanding its role in stabilizing training and enhancing convergence. Recognized its contribution to faster training and improved generalization.
+  
+  - Dropout: Implemented dropout regularization to mitigate overfitting. Acknowledged the role of dropout in creating more robust models.
+  
+  - Convolutional Neural Networks (CNNs): Implemented CNNs for image classification on CIFAR-10. Understood the significance of convolutional layers, pooling, and fully-connected layers.
+   
+  - PyTorch/Tensorflow in CIFAR-10: Applied PyTorch and Tensorflow to construct, train, and assess models on CIFAR-10. Conducted a comparative analysis of model performance between PyTorch and Tensorflow.
     
 ### 3. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Style Transfer, Generative Adversarial Networks
  - [Image Captioning with Vanilla RNNs]()
@@ -62,24 +62,15 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    
 - **Learnings from Assignemnt 3**:
   
-#### Image Captioning with Vanilla RNNs:
-- Explored image captioning using Vanilla RNNs.
-- Addressed challenges in generating captions for images.
-
-#### Image Captioning with LSTMs:
-- Implemented image captioning using LSTMs, achieving improved caption generation compared to Vanilla RNNs.
-
-#### Network Visualization:
-- Learned techniques for visualizing neural network activations.
-- Explored methods to interpret neural network workings.
-
-#### Style Transfer:
-- Implemented neural style transfer using PyTorch.
-- Explored creative applications of deep learning in image processing.
-
-#### Generative Adversarial Networks (GANs):
-- Understood GANs and applied them for image generation.
-- Implemented a GAN model using PyTorch for realistic image synthesis.
+  - Image Captioning with Vanilla RNNs:Explored image captioning using Vanilla RNNs.Addressed challenges in generating captions for images.
+  
+  - Image Captioning with LSTMs: Implemented image captioning using LSTMs, achieving improved caption generation compared to Vanilla RNNs.
+  
+  - Network Visualization: Learned techniques for visualizing neural network activations.Explored methods to interpret neural network workings.
+  
+   Style Transfer: Implemented neural style transfer using PyTorch. Explored creative applications of deep learning in image processing.
+  
+  - Generative Adversarial Networks (GANs): Understood GANs and applied them for image generation. Implemented a GAN model using PyTorch for realistic image synthesis.
 
 Assignment 3 provided insights into advanced deep learning topics, including image captioning, network visualization, style transfer, and generative models.
 ## 📝 Additional Resources
