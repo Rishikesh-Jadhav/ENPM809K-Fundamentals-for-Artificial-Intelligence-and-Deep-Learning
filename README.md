@@ -49,16 +49,16 @@ Emphasizing deep learning, the course covers foundational machine learning princ
    
   - PyTorch/Tensorflow in CIFAR-10: Applied PyTorch and Tensorflow to construct, train, and assess models on CIFAR-10. Conducted a comparative analysis of model performance between PyTorch and Tensorflow.
     
-### 3. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Style Transfer, Generative Adversarial Networks
- - [Image Captioning with Vanilla RNNs]()
+### 3. [Assignment 3](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/tree/main/Assignment_3): Image Captioning with Vanilla RNNs, Image Captioning with LSTMs, Network Visualization, Transformer Captioning, Generative Adversarial Networks
+ - [Image Captioning with Vanilla RNNs](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/RNN_Captioning.ipynb)
 
- - [Image Captioning with LSTMs]()
+ - [Image Captioning with LSTMs](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/LSTM_Captioning.ipynb)
 
- - [Network Visualization: Saliency maps, Class Visualization, and Fooling Images (PyTorch)]()
+ - [Network Visualization: Saliency maps, Class Visualization, and Fooling Images (PyTorch)](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/Network_Visualization.ipynb)
 
- - [Style Transfer (PyTorch)]()
+ - [Transformer Captioning)](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/Transformer_Captioning.ipynb)
 
- - [Generative Adversarial Networks (PyTorch)]()
+ - [Generative Adversarial Networks (PyTorch)](https://github.com/Rishikesh-Jadhav/ENPM809K-Fundamentals-for-Artificial-Intelligence-and-Deep-Learning/blob/main/Assignment_3/Generative_Adversarial_Networks.ipynb)
    
 - **Learnings from Assignemnt 3**:
   
@@ -68,11 +68,11 @@ Emphasizing deep learning, the course covers foundational machine learning princ
   
   - Network Visualization: Learned techniques for visualizing neural network activations. Explored methods to interpret neural network workings.
   
-   Style Transfer: Implemented neural style transfer using PyTorch. Explored creative applications of deep learning in image processing.
-  
-  - Generative Adversarial Networks (GANs): Understood GANs and applied them for image generation. Implemented a GAN model using PyTorch for realistic image synthesis.
+  - Transformer Captioning: Implemented key pieces of a transformer decoder to peform imaghe captioning task
+    
+  - Generative Adversarial Networks (GANs): Understood GANs, DCGANs and applied them for image generation on the MNIST dataset. Implemented a GAN model using PyTorch for realistic image synthesis.
 
-Assignment 3 provided insights into advanced deep learning topics, including image captioning, network visualization, style transfer, and generative models.
+Assignment 3 provided insights into advanced deep learning topics, including image captioning, network visualization, Transformer Captioning, and generative models.
 
 ## 📝 Additional Resources
 - [Course assignments and modules](https://cs231n.github.io/)
